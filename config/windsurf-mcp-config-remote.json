@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "obsidian-mcp-server-remote": {
+      "url": "http://localhost:3000/sse",
+      "env": {
+        "OPENAI_API_KEY": "your_openai_api_key_here",
+        "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
+      }
+    }
+  }
+}

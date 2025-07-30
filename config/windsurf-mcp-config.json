@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "obsidian-mcp-server": {
+      "command": "node",
+      "args": [
+        "/path/to/obsidian-mcp/dist/index.js"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "your_openai_api_key_here",
+        "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
+      }
+    }
+  }
+}
