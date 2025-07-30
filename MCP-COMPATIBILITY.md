@@ -2,6 +2,8 @@
 
 The Obsidian MCP Server is **completely client-agnostic** and works with any MCP-compatible client. This document provides configuration examples for popular MCP clients.
 
+> **🔌 Enhanced Integration**: For direct Obsidian plugin API access and enhanced features, see the companion [Obsidian MCP Plugin](https://github.com/sethdavis512/obsidian-mcp-plugin).
+
 ## 🔄 Universal MCP Protocol
 
 This server implements the official **Model Context Protocol (MCP)** specification, ensuring compatibility with:

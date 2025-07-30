@@ -2,6 +2,8 @@
 
 A comprehensive Model Context Protocol (MCP) server that integrates your Obsidian vault with OpenAI's API. **Client-agnostic** design works with Windsurf, Claude Desktop, Cursor, VS Code, and any MCP-compatible client.
 
+> **🔌 Related Project**: For enhanced Obsidian integration, see the companion [Obsidian MCP Plugin](https://github.com/sethdavis512/obsidian-mcp-plugin) that provides direct plugin API access.
+
 ## Features
 
 - **Full Vault Access**: Read, write, search, and manage your Obsidian notes
@@ -151,12 +153,18 @@ The server supports both local and remote configurations. See the `config/` dire
 - `windsurf-mcp-config.json` - Local stdio configuration
 - `windsurf-mcp-config-remote.json` - Remote HTTP/SSE configuration
 
+## Related Projects
+
+- **[Obsidian MCP Plugin](https://github.com/sethdavis512/obsidian-mcp-plugin)** - Direct Obsidian plugin for enhanced integration with plugin API access
+- **[Obsidian MCP Server](https://github.com/sethdavis512/obsidian-mcp-server)** - This repository - Universal MCP server for file-based vault access
+
 ## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│     Windsurf    │    │   MCP Server    │    │  Obsidian Vault │
-│   (Cascade)     │◄──►│                 │◄──►│   (Markdown)    │
+│   MCP Client    │    │   MCP Server    │    │  Obsidian Vault │
+│ (Windsurf/Claude│◄──►│                 │◄──►│   (Markdown)    │
+│  /Cursor/etc.)  │    │                 │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                               │
                               ▼

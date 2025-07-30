@@ -1,6 +1,8 @@
 # Obsidian MCP Server Setup Guide
 
-This guide will walk you through setting up the Obsidian MCP Server for use with Windsurf.
+This guide will walk you through setting up the Obsidian MCP Server for use with Windsurf and other MCP clients.
+
+> **🔌 Enhanced Integration**: For direct Obsidian plugin API access, consider also installing the companion [Obsidian MCP Plugin](https://github.com/sethdavis512/obsidian-mcp-plugin).
 
 ## Prerequisites
 
