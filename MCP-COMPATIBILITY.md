@@ -38,7 +38,7 @@ The server supports both standard MCP transport protocols:
   "mcpServers": {
     "obsidian-mcp-server": {
       "command": "node",
-      "args": ["/absolute/path/to/obsidian-mcp/dist/index.js"],
+      "args": ["/absolute/path/to/obsidian-mcp-server/dist/index.js"],
       "env": {
         "OPENAI_API_KEY": "your_openai_api_key_here",
         "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
@@ -75,7 +75,7 @@ Add to your Claude Desktop configuration file:
   "mcpServers": {
     "obsidian": {
       "command": "node",
-      "args": ["/absolute/path/to/obsidian-mcp/dist/index.js"],
+      "args": ["/absolute/path/to/obsidian-mcp-server/dist/index.js"],
       "env": {
         "OPENAI_API_KEY": "your_openai_api_key_here",
         "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
@@ -95,7 +95,7 @@ Add to your Cursor settings:
     "servers": {
       "obsidian-mcp-server": {
         "command": "node",
-        "args": ["/absolute/path/to/obsidian-mcp/dist/index.js"],
+        "args": ["/absolute/path/to/obsidian-mcp-server/dist/index.js"],
         "env": {
           "OPENAI_API_KEY": "your_openai_api_key_here",
           "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
@@ -116,7 +116,7 @@ Configuration varies by extension, but typically:
     {
       "name": "obsidian-mcp-server",
       "command": "node",
-      "args": ["/absolute/path/to/obsidian-mcp/dist/index.js"],
+      "args": ["/absolute/path/to/obsidian-mcp-server/dist/index.js"],
       "env": {
         "OPENAI_API_KEY": "your_openai_api_key_here",
         "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
@@ -170,7 +170,7 @@ npm run start:http
 
 ## 🛠 Standard MCP Tools
 
-All 13 tools are implemented according to MCP specification:
+All 14 tools are implemented according to MCP specification:
 
 | Tool | Description | Input Schema |
 |------|-------------|--------------|
@@ -187,6 +187,7 @@ All 13 tools are implemented according to MCP specification:
 | `extract_tasks` | Extract tasks from notes | `{ paths?: string[], query?: string, tags?: string[] }` |
 | `weekly_digest` | Generate weekly digest | `{}` |
 | `answer_question` | Answer based on vault | `{ question: string, query?: string, tags?: string[] }` |
+| `generate_tags` | Generate suggested tags for a note | `{ path: string }` |
 
 ## 🔍 Tool Discovery
 

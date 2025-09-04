@@ -20,7 +20,7 @@ A comprehensive Model Context Protocol (MCP) server that integrates your Obsidia
 
 ```bash
 # Clone or download the project
-cd obsidian-mcp
+cd obsidian-mcp-server
 npm install
 npm run build
 ```
@@ -47,7 +47,7 @@ OBSIDIAN_VAULT_PATH=/path/to/your/obsidian/vault
 npm run dev
 
 # Test HTTP mode (in another terminal)
-node dist/http-server.js
+node dist/http-index.js
 ```
 
 ### 4. MCP Client Integration
@@ -65,7 +65,7 @@ Add to your Windsurf MCP configuration:
   "mcpServers": {
     "obsidian-mcp-server": {
       "command": "node",
-      "args": ["/absolute/path/to/obsidian-mcp/dist/index.js"],
+      "args": ["/absolute/path/to/obsidian-mcp-server/dist/index.js"],
       "env": {
         "OPENAI_API_KEY": "your_openai_api_key_here",
         "OBSIDIAN_VAULT_PATH": "/path/to/your/obsidian/vault"
@@ -79,7 +79,7 @@ Add to your Windsurf MCP configuration:
 
 1. Start the HTTP server:
 ```bash
-npm start
+npm run start:http
 ```
 
 2. Add to your Windsurf MCP configuration:
@@ -186,10 +186,11 @@ The server supports both local and remote configurations. See the `config/` dire
 ### Project Structure
 
 ```
-obsidian-mcp/
+obsidian-mcp-server/
 ├── src/
 │   ├── index.ts           # Main entry point (stdio)
-│   ├── http-server.ts     # HTTP server entry point
+│   ├── http-index.ts      # HTTP server entry point
+│   ├── http-server.ts     # HTTP server implementation
 │   ├── mcp-server.ts      # MCP server implementation
 │   ├── vault.ts           # Obsidian vault operations
 │   ├── openai-client.ts   # OpenAI integration
@@ -209,10 +210,12 @@ obsidian-mcp/
 ### Building
 
 ```bash
-npm run build    # Compile TypeScript
-npm run dev      # Run in development mode
-npm start        # Run compiled version
-npm test         # Run tests
+npm run build      # Compile TypeScript to dist/
+npm run dev        # Run MCP server in development mode (stdio)
+npm run dev:http   # Run HTTP server in development mode  
+npm start          # Run compiled MCP server (stdio)
+npm run start:http # Run compiled HTTP server
+npm test           # Run comprehensive test suite
 ```
 
 ### Testing
