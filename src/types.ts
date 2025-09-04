@@ -43,18 +43,3 @@ export interface ServerConfig {
   debug?: boolean;
 }
 
-export interface NoteOperation {
-  type: 'create' | 'update' | 'delete' | 'read';
-  path: string;
-  content?: string;
-  frontmatter?: Record<string, any>;
-}
-
-export interface BulkOperationResult {
-  success: boolean;
-  processed: number;
-  errors: Array<{
-    path: string;
-    error: string;
-  }>;
-}

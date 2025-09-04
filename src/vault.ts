@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { glob } from 'glob';
 import matter from 'gray-matter';
-import { ObsidianNote, VaultStats, SearchOptions, SearchResult, NoteOperation, BulkOperationResult } from './types.js';
+import { ObsidianNote, VaultStats, SearchOptions, SearchResult } from './types.js';
 
 export class ObsidianVault {
   private vaultPath: string;
@@ -76,16 +76,6 @@ export class ObsidianVault {
     return this.readNote(relativePath);
   }
 
-  async updateNote(relativePath: string, content?: string, frontmatter?: Record<string, any>): Promise<ObsidianNote> {
-    const existingNote = await this.readNote(relativePath);
-    
-    const newContent = content !== undefined ? content : existingNote.content;
-    const newFrontmatter = frontmatter !== undefined ? 
-      { ...existingNote.frontmatter, ...frontmatter } : 
-      existingNote.frontmatter;
-
-    return this.writeNote(relativePath, newContent, newFrontmatter);
-  }
 
   async deleteNote(relativePath: string): Promise<void> {
     const fullPath = path.join(this.vaultPath, relativePath);
@@ -173,39 +163,6 @@ export class ObsidianVault {
     };
   }
 
-  async bulkOperation(operations: NoteOperation[]): Promise<BulkOperationResult> {
-    const result: BulkOperationResult = {
-      success: true,
-      processed: 0,
-      errors: []
-    };
-
-    for (const operation of operations) {
-      try {
-        switch (operation.type) {
-          case 'create':
-          case 'update':
-            await this.writeNote(operation.path, operation.content || '', operation.frontmatter);
-            break;
-          case 'delete':
-            await this.deleteNote(operation.path);
-            break;
-          case 'read':
-            await this.readNote(operation.path);
-            break;
-        }
-        result.processed++;
-      } catch (error) {
-        result.success = false;
-        result.errors.push({
-          path: operation.path,
-          error: error instanceof Error ? error.message : String(error)
-        });
-      }
-    }
-
-    return result;
-  }
 
   private extractTags(content: string, frontmatter: Record<string, any>): string[] {
     const tags = new Set<string>();
